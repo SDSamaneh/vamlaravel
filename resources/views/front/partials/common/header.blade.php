@@ -2,14 +2,14 @@
 <html lang="fa" dir="rtl">
 
 <head>
-      <title>Blogzine - قالب HTML مجله خبری و وبلاگ</title>
+      <title>KAVIR Manuals Report</title>
       <!-- Meta Tags -->
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta name="author" content="Blogzine">
-      <meta name="description" content="قالب وبلاگ و مجله خبری مبتنی بر بوت استرپ">
+      <meta name="description" content="KAVIR Manuals Report">
       <!-- Favicon -->
-      <link rel="shortcut icon" href="{{Vite::image('favicon.ico')}}">
+      <link rel="shortcut icon" href="{{Vite::image('favicon.png')}}">
       @vite(['resources/assets/css/app.css', 'resources/assets/js/app.js'])
       <!-- Plugins CSS -->
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />

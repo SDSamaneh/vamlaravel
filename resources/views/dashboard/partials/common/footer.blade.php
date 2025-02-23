@@ -37,6 +37,14 @@
 <div class="back-top"><i class="bi bi-arrow-up-short"></i></div>
 
 
+@error('success')
+@include('notifications.successMessage')
+@enderror()
+
+@if(session()->has('error'))
+@include('notifications.errorMessage')
+@endif
+
 <!-- Vendors -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.27.3/apexcharts.min.js"></script>
 <script src="assets/vendor/overlay-scrollbar/js/OverlayScrollbars.min.js"></script>

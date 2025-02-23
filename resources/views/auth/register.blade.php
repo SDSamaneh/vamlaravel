@@ -33,7 +33,7 @@
                                           <!-- Number -->
                                           <div class="mb-3">
                                                 <label class="form-label" for="exampleInputMobail">شماره همراه</label>
-                                                <input type="number" name="phone_number" class="form-control @error('phone_number') border-danger @enderror" id="exampleInputMobail" value="{{old('phone_number')}}">
+                                                <input type="text" name="phone_number" class="form-control @error('phone_number') border-danger @enderror" id="exampleInputMobail" value="{{old('phone_number')}}">
                                                 @error('phone_number')
                                                 <small id="emailHelp" class="form-text text-danger">{{$message}}</small>
                                                 @enderror
@@ -57,14 +57,14 @@
                                                       <button type="submit" class="btn btn-success">ثبت نام</button>
                                                 </div>
                                                 <div class="col-sm-8 text-sm-end">
-                                                      <span>آیا قبلا ثبت نام کرده اید؟ <a href="signin.html"><u>ورود</u></a></span>
+                                                      <span>آیا قبلا ثبت نام کرده اید؟ <a href="{{route('login')}}"><u>ورود</u></a></span>
                                                 </div>
                                           </div>
                                     </form>
                                     <!-- Form END -->
                                     <hr>
                                     <!-- Social-media btn -->
-                                    <div class="text-center">
+                                    <!-- <div class="text-center">
                                           <p>برای دسترسی سریع با شبکه اجتماعی خود وارد شوید</p>
                                           <ul class="list-unstyled d-flex mt-3 justify-content-center">
 
@@ -73,7 +73,7 @@
                                                                   class="fab fa-google text-danger align-middle ms-2 fs-5"></i></a>
                                                 </li>
                                           </ul>
-                                    </div>
+                                    </div> -->
                               </div>
                         </div>
                   </div>

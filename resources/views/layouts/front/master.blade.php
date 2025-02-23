@@ -1,20 +1,25 @@
-<!-- Offcanvas START -->
-@include('front.partials.common.sidebarOffCanvasMain')
-<!-- Offcanvas END -->
-
-<!-- ======Header START -->
 @include('front.partials.common.header')
+
+@auth()
+
+@include('front.partials.common.sidebarOffCanvasMain')
+
+@endauth
+
 @include('front.partials.common.topNav')
-<!-- Header END -->
+
 
 @yield('content')
 
-<!-- Footer START  -->
-@include('front.partials.common.footer')
-<!-- Footer END -->
-<!-- bottom menu -->
+
+
 @include('front.partials.common.bottomNav')
-<!-- Bookmark  -->
-@include('front.partials.common.bookmark')
-<!-- Profile -->
+
+@auth()
+
 @include('front.partials.common.profile')
+@include('front.partials.common.bookmark')
+
+@endauth
+
+@include('front.partials.common.footer')

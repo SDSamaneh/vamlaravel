@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\WelcomeMail;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules\Password;
 
-use function Laravel\Prompts\password;
+use function PHPUnit\Framework\callback;
 
 class AuthController extends Controller
 {
     //Register or Create User
-    public function register(Request $request)
+    public function register(Request $request): RedirectResponse
     {
         $fields = $request->validate([
             'name' => ['required', 'min:3', 'max:255'],
@@ -35,12 +38,51 @@ class AuthController extends Controller
         //create user
         $user = User::create($fields);
         //login user
-        Auth::login($user);
+        if ($user) {
+            Auth::login($user);
+            Mail::to($request->email)->send(new WelcomeMail(Auth::user(), $request->password));
+        } else {
+            return redirect()->back()->with('erroe', 'مشکلی پیش آمده است . مجدد اقدام فرمایید.');
+        }
+
         //send mail
 
         //redirect
         return redirect()->route('home')->withErrors([
-            'successLogin' => auth()->user()->name . '.عزیز خوش آمدید' ;
+            'success' => auth()->user()->name . ' خوش آمدید'
         ]);
+    }
+
+    public function login(Request $request): RedirectResponse
+    {
+        $credentials = $request->validate(
+            [
+                'email' => ['required', 'email'],
+                'password' => ['required'],
+            
+            ],
+            [
+
+                'email.required' => 'ایمیل معتبر خود را وارد کنید',
+                'password.required' => 'رمز عبور خود را وارد کنید',
+               
+            ]
+        );
+        if (Auth::attempt($credentials, $request->remember)) {
+            $request->session()->regenerate();
+            return redirect()->route('home')->withErrors([
+                'success' => auth()->user()->name . 'خوش آمدید'
+            ]);
+        } else {
+            return redirect()->back()->with('error', callback('نام کاربری یا رمز عبور اشتباه است '));
+        }
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('home')->withErrors(['success' => 'با موفقیت از سایت خارج شدید.']);
     }
 }

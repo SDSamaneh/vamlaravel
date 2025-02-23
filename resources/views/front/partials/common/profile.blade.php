@@ -1,4 +1,3 @@
-
 <div class="offcanvas offcanvas-start w-100" tabindex="-1" id="offcanvas‌Profile"
       aria-labelledby="offcanvasTopLabel">
       <div class="offcanvas-header">
@@ -12,16 +11,14 @@
                         <div class="col-12">
                               <div class="card mb-4 position-relative z-index-9">
                                     <!-- Cover image -->
-                                    <div class="py-5 h-200 rounded"
-                                          style="background-image:url(assets/images/blog/16by9/big/07.jpg); background-position: center bottom; background-size: cover; background-repeat: no-repeat;">
-                                    </div>
-                                    <div class="card-body pt-3 pb-0">
+
+                                    <div class="card-body pt-3 pb-0 mt-5">
                                           <div class="row d-flex justify-content-between">
                                                 <!-- Avatar -->
                                                 <div class="col-sm-12 col-md-auto text-center text-md-start">
                                                       <div class="avatar avatar-xxl mt-n5">
                                                             <img class="avatar-img rounded-circle border border-white border-3 shadow"
-                                                                  src="{{Vite::image('avatar/03.jpg')}}" alt="">
+                                                                  src="{{Vite::image('avatar/avatar.png')}}" alt="">
                                                       </div>
                                                 </div>
                                                 <!-- Profile info -->
@@ -53,17 +50,22 @@
                                     <div class="card-header border-bottom p-3">
                                           <h4 class="card-header-title mb-0">حساب کاربری</h4>
                                     </div>
-                                    <div class="card-body">
+                                    <div class="row card-body">
                                           <!-- Full name -->
                                           <div class="mb-3">
-                                                <label class="form-label">نام کامل</label>
+                                                <label class="form-label">نام و نام خانوادگی</label>
                                                 <div class="input-group">
-                                                      <input type="text" class="form-control" value="مهدی" placeholder="نام">
-                                                      <input type="text" class="form-control" value="علیزاده" placeholder="نام خانوادگی">
+                                                      <input type="text" class="form-control" value="" placeholder="نام">
+                                                      <input type="text" class="form-control" value="" placeholder="نام خانوادگی">
                                                 </div>
                                           </div>
+                                          <div class="col-6 mb-3">
+                                                <label class="form-label">شماره همراه</label>
+                                                <input type="text" name="phone_number" class="form-control" value="">
+
+                                          </div>
                                           <!-- Username -->
-                                          <div class="mb-3">
+                                          <div class="col-6 mb-3">
                                                 <label class="form-label">نام کاربری</label>
                                                 <div class="input-group">
                                                       <span class="input-group-text">gmail.com</span>
@@ -84,7 +86,7 @@
                                                             <!-- Avatar preview -->
                                                             <div class="avatar avatar-xl">
                                                                   <img class="avatar-img rounded-circle border border-white border-3 shadow"
-                                                                        src="{{Vite::image('avatar/03.jpg')}}" alt="">
+                                                                        src="{{Vite::image('avatar/avatar.png')}}" alt="">
                                                             </div>
                                                       </div>
                                                       <!-- Avatar remove button -->
@@ -94,14 +96,7 @@
                                                 </div>
                                                 <!-- Avatar upload END -->
                                           </div>
-                                          <!-- Bio -->
-                                          <div class="mb-3">
-                                                <label class="form-label">درباره من</label>
-                                                <div class="form-text mb-3">توضیحات مختصری برای پروفایل شما</div>
-                                                <textarea class="form-control"
-                                                      rows="10" cols="10" style="min-height: 300px;">من راهی برای دریافت پول برای سرگرمی مورد علاقه‌ام پیدا کرده‌ام و این کار را در حالی انجام می‌دهم که رویای سفر به دور دنیا را دنبال می‌کنم.</textarea>
 
-                                          </div>
                                           <!-- Save button -->
                                           <div class="d-flex justify-content-end mt-4">
                                                 <a href="#" class="btn text-secondary border-0 me-2">لغو</a>
@@ -110,34 +105,7 @@
                                     </div>
                               </div>
                               <!-- Profile END -->
-                              <!-- Social links START -->
-                              <div class="card border mb-4">
-                                    <div class="card-header border-bottom p-3">
-                                          <h4 class="card-header-title mb-0"> شبکه های اجتماعی</h4>
-                                    </div>
-                                    <div class="card-body">
-                                          <!-- Skype -->
-                                          <div class="mb-3">
-                                                <label class="form-label">تلگرام</label>
-                                                <input class="form-control text-end" type="text" value="https://facebook.com">
-                                          </div>
-                                          <!-- Email -->
-                                          <div class="mb-3">
-                                                <label class="form-label">اینستاگرام</label>
-                                                <input class="form-control text-end" type="email" value="https://www.linkedin.com">
-                                          </div>
-                                          <!-- Address -->
-                                          <div class="mb-3">
-                                                <label class="form-label">لینکداین</label>
-                                                <input class="form-control text-end" type="text" value="https://twitter.com">
-                                          </div>
-                                          <!-- Save button -->
-                                          <div class="d-flex justify-content-end mt-4">
-                                                <a href="#" class="btn btn-primary">ذخیره</a>
-                                          </div>
-                                    </div>
-                              </div>
-                              <!-- Social links END -->
+
 
 
                         </div>

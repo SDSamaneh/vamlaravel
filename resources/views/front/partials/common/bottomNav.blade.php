@@ -5,15 +5,23 @@
                         <a href="" class="nav-link active">
                               <li class="nav-item d-flex"><i class="bi bi-house me-1" style="font-size: 18px;"></i>خانه</li>
                         </a>
+                        @auth()
                         <a href="" class="nav-link">
                               <li class="nav-item d-flex"><i class="bi bi-person-lines-fill me-1" style="font-size: 18px;"></i>پروفایل</li>
                         </a>
+                        @endauth
+
+                        @guest()
                         <a href="" class="nav-link">
-                              <li class="nav-item d-flex"><i class="bi bi-box-arrow-in-left me-1" style="font-size: 18px;"></i>ورود - ثبت نام</li>
+                              <li class="nav-item d-flex"><i class="bi bi-box-arrow-in-left me-1" style="font-size: 18px;"></i>ورود</li>
                         </a>
                         <a href="" class="nav-link">
+                              <li class="nav-item d-flex"><i class="bi bi-person-fill-add me-1" style="font-size: 18px;"></i>ثبت نام</li>
+                        </a>
+                        @endguest
+                        <!-- <a href="" class="nav-link">
                               <li class="nav-item d-flex"><i class="bi bi-bell me-1" style="font-size: 18px;"></i>اعلانات</li>
-                        </a>
+                        </a> -->
                   </ul>
             </div>
       </div>

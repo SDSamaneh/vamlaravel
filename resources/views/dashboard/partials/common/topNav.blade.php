@@ -1,12 +1,11 @@
-
 <nav class="navbar-light navbar-sticky header-static border-bottom navbar-dashboard">
       <!-- Logo Nav START -->
       <nav class="navbar navbar-expand-xl">
             <div class="container">
                   <!-- Logo START -->
-                  <a class="navbar-brand me-3" href="index.html">
-                        <img class="navbar-brand-item light-mode-item" src="assets/images/logo.svg" alt="logo">
-                        <img class="navbar-brand-item dark-mode-item" src="assets/images/logo-light.svg" alt="logo">
+                  <a class="navbar-brand me-3" href="{{route('index')}}">
+                        <img class="navbar-brand-item light-mode-item" src="{{Vite::image('logo.png')}}" alt="logo">
+                        <img class="navbar-brand-item dark-mode-item" src="{{Vite::image('logo.png')}}" alt="logo">
                   </a>
                   <!-- Logo END -->
 
@@ -21,22 +20,21 @@
                         <ul class="navbar-nav navbar-nav-scroll mx-auto">
 
                               <!-- Nav item 1 Demos -->
-                              <li class="nav-item"><a class="nav-link" href="dashboard.html"><i class="bi bi-house-door me-1"></i>پیشخوان</a></li>
+                              <li class="nav-item"><a class="nav-link" href="{{route('home')}}"><i class="bi bi-house-door me-1"></i>وبسایت</a></li>
 
                               <!-- Nav item 2 Post -->
                               <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="postMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-pencil me-1"></i>مدیریت اخبار</a>
                                     <ul class="dropdown-menu" aria-labelledby="postMenu">
                                           <!-- dropdown submenu -->
-                                          <li> <a class="dropdown-item" href="dashboard-post-list.html">همه خبرها</a> </li>
+                                          <li> <a class="dropdown-item" href="{{route('allNews')}}">همه خبرها</a> </li>
 
-                                          <li> <a class="dropdown-item" href="dashboard-post-create.html">ایجاد خبر</a> </li>
-                                          <li> <a class="dropdown-item" href="dashboard-post-edit.html">ویرایش خبر</a> </li>
-                                          <li> <a class="dropdown-item" href="dashboard-post-categories.html">افزودن دسته بندی</a> </li>
+                                          <li> <a class="dropdown-item" href="{{route('createNews')}}">ایجاد خبر</a> </li>
+                                          <li> <a class="dropdown-item" href="{{route('editNews')}}">ویرایش خبر</a> </li>
+                                          <li> <a class="dropdown-item" href="{{route('categoryNews.index')}}">افزودن دسته بندی</a> </li>
                                     </ul>
                               </li>
-                              <li class="nav-item"><a class="nav-link" href="dashboard-reviews.html"><i class="bi bi-chat-dots me-1"></i>مدیریت دیدگاه ها</a></li>
-                              <li class="nav-item"><a class="nav-link" href="dashboard-reviews.html"><i class="bi bi-people me-1 fs-5"></i>مدیریت کاربران</a></li>
+                              <li class="nav-item"><a class="nav-link" href="{{route('users')}}"><i class="bi bi-people me-1 fs-5"></i>مدیریت کاربران</a></li>
                         </ul>
                   </div>
                   <!-- Main navbar END -->
@@ -137,7 +135,7 @@
                         <div class="nav-item ms-2 ms-md-3 dropdown">
                               <!-- Avatar -->
                               <a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/03.jpg" alt="avatar">
+                                    <img class="avatar-img rounded-circle" src="{{Vite::image('avatar/avatar.png')}}" alt="avatar">
                               </a>
 
                               <!-- Profile dropdown START -->
@@ -147,7 +145,7 @@
                                           <div class="d-flex align-items-center">
                                                 <!-- Avatar -->
                                                 <div class="avatar me-3">
-                                                      <img class="avatar-img rounded-circle shadow" src="assets/images/avatar/03.jpg" alt="avatar">
+                                                      <img class="avatar-img rounded-circle shadow" src="{{Vite::image('avatar/avatar.png')}}" alt="avatar">
                                                 </div>
                                                 <div>
                                                       <a class="h6 mt-2 mt-sm-0" href="#"> علیرضا مرادی</a>
@@ -157,9 +155,7 @@
                                           <hr>
                                     </li>
                                     <!-- Links -->
-                                    <li><a class="dropdown-item" href="#"><i class="bi bi-person fa-fw me-2"></i>ویرایش</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="bi bi-gear fa-fw me-2"></i>تنظیمات</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="bi bi-info-circle fa-fw me-2"></i>راهنما</a></li>
+                                    <li><a class="dropdown-item" href="{{route('profile')}}"><i class="bi bi-person fa-fw me-2"></i>ویرایش</a></li>
                                     <li><a class="dropdown-item" href="#"><i class="bi bi-power fa-fw me-2"></i>خروج</a></li>
                                     <li class="dropdown-divider mb-3"></li>
                                     <li>
@@ -212,17 +208,15 @@
                                                       </ul>
                                                 </div>
                                                 <!-- Dark mode options END -->
-
                                           </div>
+                                    </li>
+                              </ul>
+                              <!-- Profile dropdown END -->
                         </div>
-                        </li>
-                        </ul>
                         <!-- Profile dropdown END -->
-                  </div>
-                  <!-- Profile dropdown END -->
 
-                  <!-- Nav right END -->
-            </div>
+                        <!-- Nav right END -->
+                  </div>
             </div>
       </nav>
       <!-- Logo Nav END -->
