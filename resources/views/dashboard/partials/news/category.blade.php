@@ -4,7 +4,7 @@
                   <div class="col-12 border rounded-3">
                         <!-- Title -->
                         <div class="d-sm-flex justify-content-sm-center mb-3 mt-3 align-items-center">
-                              <h1 class="mb-2 mb-sm-0 h3">دسته بندی ها <span class="badge bg-primary bg-opacity-10 text-primary">07</span></h1>
+                              <h1 class="mb-2 mb-sm-0 h3">دسته بندی ها <span class="badge bg-primary bg-opacity-10 text-primary">{{$categoryCount}}</span></h1>
                         </div>
                         <!-- Blog list table START -->
                         <div class="card bg-transparent ">
@@ -69,9 +69,19 @@
                         <div class="card border h-100">
                               <!-- Card header -->
                               <div class="card-header border-bottom p-3">
-                                    <div class="d-flex align-items-center">
+                                    <div class="d-flex align-items-center justify-content-between">
                                           <div class="icon-lg shadow bg-body rounded-circle">icon</div>
-                                          <h4 class="mb-0 ms-3">{{$category->name}}</h4>
+                                          <h4 class="mb-0 ms-3 flex-grow-1">{{$category->name}}</h4>
+                                          <div class="d-flex justify-align-content-between align-items-center">
+                                                <a href="{{route('category.edit',$category->id)}}" class="text-success mb-0 me-2"><i class="fas fa-edit"></i></a>
+
+                                                <form action="{{route('category.destroy',$category->id)}}" method="post">
+                                                      @csrf
+                                                      @method('DELETE')
+                                                      <button type="submit" class="border-0 bg-transparent"><i class="fas fa-times-circle text-danger"></i></button>
+
+                                                </form>
+                                          </div>
                                     </div>
                               </div>
 
@@ -79,22 +89,9 @@
                               <div class="card-body p-3">
                                     <p>{{$category->description}}</p>
 
-                                    <!-- Followers and Post -->
                                     <div class="d-flex justify-content-between">
-                                          <!-- Total post -->
-                                          <div>
-                                                <h5 class="mb-0">846</h5>
-                                                <h6 class="mb-0 fw-light">کل اخبار</h6>
-                                          </div>
-                                          <!-- Avatar group -->
-                                          <ul class="avatar-group mb-0">
-                                                <li class="avatar avatar-xs">
-                                                      <img class="avatar-img rounded-circle" src="assets/images/avatar/01.jpg" alt="avatar">
-                                                </li>
-                                                <li class="avatar avatar-xs">
-                                                      <div class="avatar-img rounded-circle bg-primary"><i class="fas fa-plus text-white position-absolute top-50 start-50 translate-middle"></i></div>
-                                                </li>
-                                          </ul>
+                                          <h6 class="mb-0 fw-light">کل اخبار</h6>
+                                          <h5 class="px-2 py-1 bg-success rounded text-white">{{$category->articles_count}}</h5>
                                     </div>
 
                               </div>
@@ -113,7 +110,11 @@
                         تا این لحظه دسته بندی ثبت نشده است !
                   </div>
                   @endif
-
             </div>
+
+            <div class="pagination d-flex justify-content-center align-items-center mt-4">
+                  {{$categories->links('pagination::bootstrap-5')}}
+            </div>
+
       </div>
 </section>

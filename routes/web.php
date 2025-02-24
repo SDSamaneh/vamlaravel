@@ -30,10 +30,14 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
         Route::get('/news/category', [CategoryController::class, 'index'])->name('categoryNews.index');
         Route::post('/news/category', [CategoryController::class, 'store']);
 
+        Route::get('/news/category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+        Route::put('/news/category/edit/{id}', [CategoryController::class, 'update'])->name('category.update');
+        Route::delete('/news/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
 
         Route::view('/user', 'dashboard.users')->name('users');
     });
+
     Route::middleware('role:author|admin')->group(function () {
 
         Route::view('/', 'dashboard.index')->name('index');

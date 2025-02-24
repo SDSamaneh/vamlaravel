@@ -5,7 +5,7 @@
                   <div class="row align-items-center justify-content-between">
                         <div class="col-lg-6">
                               <!-- Copyright -->
-                              <div class="text-center text-lg-start">©2022 ارائه شده در سایت <a href="https://www.rtl-theme.com/" class="text-reset btn-link" target="_blank">راست چین</a>
+                              <div class="text-center text-lg-start">©2025 ارائه شده در سایت <a href="#" class="text-reset btn-link" target="_blank">کویرموتور</a>
                               </div>
                         </div>
                         <div class="col-lg-6 d-sm-flex align-items-center justify-content-center justify-content-lg-end">
@@ -17,14 +17,12 @@
                                     <ul class="dropdown-menu min-w-auto" aria-labelledby="languageSwitcher">
                                           <li><a class="dropdown-item" href="#">فارسی</a></li>
                                           <li><a class="dropdown-item" href="#">انگلیسی </a></li>
-                                          <li><a class="dropdown-item" href="#">فرانسوی</a></li>
+
                                     </ul>
                               </div>
                               <!-- Links -->
                               <ul class="nav text-center text-sm-end justify-content-center justify-content-center mt-3 mt-md-0">
-                                    <li class="nav-item"><a class="nav-link" href="#">شرایط</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">قوانین</a></li>
-                                    <li class="nav-item"><a class="nav-link pe-0" href="#">کوکی</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">یکتاز سیکلت کویر</a></li>
                               </ul>
                         </div>
                   </div>
