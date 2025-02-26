@@ -29,7 +29,7 @@
                                           <!-- dropdown submenu -->
                                           <li> <a class="dropdown-item" href="{{route('allNews')}}">همه خبرها</a> </li>
 
-                                          <li> <a class="dropdown-item" href="{{route('createNews')}}">ایجاد خبر</a> </li>
+                                          <li> <a class="dropdown-item" href="{{route('article.create')}}">ایجاد خبر</a> </li>
                                           <li> <a class="dropdown-item" href="{{route('editNews')}}">ویرایش خبر</a> </li>
                                           <li> <a class="dropdown-item" href="{{route('categoryNews.index')}}">افزودن دسته بندی</a> </li>
                                     </ul>

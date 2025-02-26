@@ -34,6 +34,8 @@ class AuthController extends Controller
             'password.max' => 'رمز عبور باید حداکثر 12 کاراکتر باشد',
             'password.confirmed' => 'رمز عبور باید با تکرار آن یکسان باشد',
             'phone_number.required' => 'شماره همراه خود را وارد کنید',
+            'phone_number.numeric' => 'شماره همراه باید عدد باشد',
+            'phone_number.digits' => 'شماره همراه باید 11 رقم باشد',
         ]);
         //create user
         $user = User::create($fields);
@@ -59,13 +61,13 @@ class AuthController extends Controller
             [
                 'email' => ['required', 'email'],
                 'password' => ['required'],
-            
+
             ],
             [
 
                 'email.required' => 'ایمیل معتبر خود را وارد کنید',
                 'password.required' => 'رمز عبور خود را وارد کنید',
-               
+
             ]
         );
         if (Auth::attempt($credentials, $request->remember)) {

@@ -9,14 +9,16 @@
                   <div class="col-12">
                         <div class="card border">
                               <div class="card-body">
-                                    <form>
+                                    <form action="{{route('article.store')}}" method="post">
+                                          @csrf
                                           <div class="row">
                                                 <div class="col-12">
-                                                      <!-- Post name -->
                                                       <div class="mb-3">
                                                             <label class="form-label">عنوان</label>
-                                                            <input required id="con-name" name="title" type="text" class="form-control" placeholder="عنوان خبر">
-                                                            <small>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</small>
+                                                            <input id="con-name" name="title" type="text" class="form-control" placeholder="عنوان خبر" value="">
+                                                            @error('title')
+                                                            <small class="mt-2 d-inline-block text-danger">{{$message}}</small>
+                                                            @enderror
                                                       </div>
                                                 </div>
                                                 <!-- Post type START -->
@@ -42,7 +44,7 @@
                                                                   </div>
                                                                   <!-- Post type item -->
                                                                   <div class="flex-fill">
-                                                                        <input type="radio" class="btn-check" name="type" id="option3" checked>
+                                                                        <input type="radio" class="btn-check" name="type" id="option3">
                                                                         <label class="btn btn-outline-light w-100" for="option3">
                                                                               <i class="bi bi-chat-right-dots fs-1"></i>
                                                                               <span class="d-block"> خبری </span>
@@ -56,14 +58,7 @@
                                                                               <span class="d-block"> متنی </span>
                                                                         </label>
                                                                   </div>
-                                                                  <!-- Post type item -->
-                                                                  <div class="flex-fill">
-                                                                        <input type="radio" class="btn-check" name="type" id="option5">
-                                                                        <label class="btn btn-outline-light w-100" for="option5">
-                                                                              <i class="bi bi-camera-reels fs-1"></i>
-                                                                              <span class="d-block"> چندرسانه ای </span>
-                                                                        </label>
-                                                                  </div>
+
                                                                   <!-- Post type item -->
                                                                   <div class="flex-fill">
                                                                         <input type="radio" class="btn-check" name="type" id="option6">
@@ -74,6 +69,9 @@
                                                                   </div>
                                                                   <!-- Post type item -->
                                                             </div>
+                                                            @error('type')
+                                                            <small class="mt-2 d-inline-block text-danger">{{$message}}</small>
+                                                            @enderror
                                                       </div>
                                                 </div>
                                                 <!-- Post type END -->
@@ -81,20 +79,28 @@
                                                       <div class="mb-3">
                                                             <label class="form-label">توضیح مختصر</label>
                                                             <textarea class="form-control" name="shortDescription" rows="3" placeholder="توضیح مختصری را درباره خبر بنویسید..."></textarea>
+                                                            @error('shortDescription')
+                                                            <small class="mt-2 d-inline-block text-danger">{{$message}}</small>
+                                                            @enderror
                                                       </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                       <!-- Tags -->
                                                       <div class="mb-3">
                                                             <label class="form-label">برچسب</label>
-                                                            <textarea class="form-control" rows="1" name="slug" placeholder="KTM,KAVIR,..."></textarea>
+                                                            <input type="text" name="slug" class="form-control" value="">
+                                                            @error('slug')
+                                                            <small class="mt-2 d-inline-block text-danger">{{$message}}</small>
+                                                            @enderror
                                                       </div>
                                                 </div>
-
                                                 <div class="col-md-12">
                                                       <div class="mb-3">
                                                             <label class="form-label">متن خبر</label>
                                                             <textarea name="longDescription" class="form-control"></textarea>
+                                                            @error('longDescription')
+                                                            <small class="mt-2 d-inline-block text-danger">{{$message}}</small>
+                                                            @enderror
                                                       </div>
                                                 </div>
                                                 <div class="col-6">
@@ -110,7 +116,10 @@
                                                                   </label>
 
                                                             </div>
-                                                            <p class="small mb-0 mt-2"><b>نکته:</b> فرمت های مجاز: JPG، JPEG و PNG و ابعاد پیشنهادی ما 600px * 450px است. تصاویر بزرگتر به اندازه 4:3 برش داده می شود تا با تصاویر کوچک/پیش نمایش ما مطابقت داشته باشد.</p>
+                                                            @error('image')
+                                                            <small class="mt-2 d-inline-block text-danger">{{$message}}</small>
+                                                            @enderror
+                                                            <!-- <p class="small mb-0 mt-2"><b>نکته:</b> فرمت های مجاز: JPG، JPEG و PNG و ابعاد پیشنهادی ما 600px * 450px است. تصاویر بزرگتر به اندازه 4:3 برش داده می شود تا با تصاویر کوچک/پیش نمایش ما مطابقت داشته باشد.</p> -->
                                                       </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -118,16 +127,18 @@
                                                       <div class="mb-3">
                                                             <label class="form-label">دسته بندی</label>
                                                             <select class="form-select" name="category_id" aria-label="Default select example">
-                                                                  <option selected>اقتصاد</option>
-                                                                  <option value="1">تکنولوژی</option>
-                                                                  <option value="2">رسانه</option>
-                                                                  <option value="3">گردشگری</option>
-                                                                  <option value="4">ورزش</option>
-                                                                  <option value="5">سیاست</option>
+                                                                  @forelse($categories as $category)
+                                                                  <option value="{{$category->id}}">{{$category->name}}</option>
+                                                                  @empty
+                                                                  <option>دسته بندی پیدا نشد</option>
+
+                                                                  @endforelse
                                                             </select>
+                                                            @error('category_id')
+                                                            <small class="mt-2 d-inline-block text-danger">{{$message}}</small>
+                                                            @enderror
                                                       </div>
                                                 </div>
-
                                                 <div class="col-12">
                                                       <div class="form-check mb-3">
                                                             <input class="form-check-input" type="checkbox" name="status" value="" id="postCheck">
