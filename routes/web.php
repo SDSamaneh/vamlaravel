@@ -1,15 +1,21 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\dashboard\ArticleController;
 use App\Http\Controllers\dashboard\CategoryController;
+use App\Http\Controllers\dashboard\DepartmanController;
+use App\Http\Controllers\dashboard\SupervisorController;
+use App\Http\Controllers\dashboard\UserController;
+use App\Http\Controllers\dashboard\VamController;
+use App\Http\Controllers\front\IndexController;
 use Illuminate\Support\Facades\Route;
+
+
+// event(new \App\Events\UserSubscribed());
 
 //Front Routes
 Route::group([], function () {
-    Route::view('/', 'front.index')->name('home');
-    Route::view('/article', 'front.allNews')->name('News');
-    Route::view('/manual', 'front.manual')->name('manual');
+    Route::resource('/', IndexController::class);
+
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
@@ -17,37 +23,34 @@ Route::group([], function () {
 Route::prefix('/dashboard')->middleware('auth')->group(function () {
     Route::middleware('role:admin')->group(function () {
 
-        Route::view('/article/edit', 'dashboard.editNews')->name('editNews');
+        Route::resource('category', CategoryController::class);
+        Route::resource('departman', DepartmanController::class);
+        Route::resource('supervisor', SupervisorController::class);
+        // Route::resource('users', UserController::class);
 
-        Route::get('/article/category', [CategoryController::class, 'index'])->name('categoryNews.index');
-        Route::post('/article/category', [CategoryController::class, 'store']);
-
-        Route::get('/article/category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
-        Route::put('/article/category/edit/{id}', [CategoryController::class, 'update'])->name('category.update');
-        Route::delete('/article/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
-
-
-        Route::resource('article', ArticleController::class);
-
-        Route::view('/user', 'dashboard.users')->name('users');
     });
 
     Route::middleware('role:author|admin')->group(function () {
+        // Route::resource('vam', VamController::class);
+    });
 
+    Route::middleware('role:author|manager|admin')->group(function () {
         Route::view('/', 'dashboard.index')->name('index');
-        Route::view('/article', 'dashboard.allNews')->name('allNews');
+        Route::resource('users', UserController::class);
+        Route::get('/users/edit', [UserController::class, 'edit'])->name('users.edit');
     });
 });
 
-Route::middleware('role:author|admin|subscriber')->group(
+Route::middleware('role:author|admin|humanResources|manager|subscriber')->group(
     function () {
-        Route::view('/profile', 'dashboard.profile')->name('profile');
+        Route::resource('/vam', VamController::class);
     }
 );
+
 //Front Auth Routes
 Route::prefix('/auth')->middleware('guest')->group(function () {
     //Auth Route
-    Route::view('/register', 'auth.register')->name('register');
+    Route::get('/register', [AuthController::class, 'index'])->name('register');
     Route::post('/register', [AuthController::class, 'register']);
 
     Route::view('/login', 'auth.login')->name('login');

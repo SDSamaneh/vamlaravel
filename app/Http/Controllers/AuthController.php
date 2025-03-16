@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserSubscribed;
+use App\Http\Requests\Auth\StoreRegister;
 use App\Mail\WelcomeMail;
+use App\Models\dashboard\Departmans;
+use App\Models\dashboard\Supervisors;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -14,14 +18,20 @@ use function PHPUnit\Framework\callback;
 
 class AuthController extends Controller
 {
+    public function index()
+    {
+       
+        return view('auth/register');
+    }
     //Register or Create User
     public function register(Request $request): RedirectResponse
     {
         $fields = $request->validate([
-            'name' => ['required', 'min:3', 'max:255'],
+            'name' => ['required', 'persian_alpha', 'min:3', 'max:255'],
             'email' => ['required', 'max:255', 'email', 'unique:users'],
-            'password' => ['required', 'confirmed', Password::min(size: 8)->max(size: 12)->mixedCase()->letters()->numbers()->symbols()],
-            'phone_number' => ['required', 'numeric', 'digits:11', 'unique:users']
+            'idCard' => ['required', 'ir_national_id'],
+            'phone_number' => ['required', 'ir_mobile'],
+            'password' => ['required', 'confirmed', 'min:8', 'max:12']
         ], [
             'name.required' => 'نام و نام خانوادگی خود را وارد کنید',
             'name.min' => 'نام و نام خانوادگی باید حداقل 3 کاراکتر باشد',
@@ -33,24 +43,22 @@ class AuthController extends Controller
             'password.min' => 'رمز عبور باید حداقل 8 کاراکتر باشد',
             'password.max' => 'رمز عبور باید حداکثر 12 کاراکتر باشد',
             'password.confirmed' => 'رمز عبور باید با تکرار آن یکسان باشد',
-            'phone_number.required' => 'شماره همراه خود را وارد کنید',
-            'phone_number.numeric' => 'شماره همراه باید عدد باشد',
-            'phone_number.digits' => 'شماره همراه باید 11 رقم باشد',
+
         ]);
+
         //create user
         $user = User::create($fields);
         //login user
         if ($user) {
             Auth::login($user);
             Mail::to($request->email)->send(new WelcomeMail(Auth::user(), $request->password));
+            if ($request->subscribe) {
+                event(new UserSubscribed($user));
+            }
         } else {
             return redirect()->back()->with('erroe', 'مشکلی پیش آمده است . مجدد اقدام فرمایید.');
         }
-
-        //send mail
-
-        //redirect
-        return redirect()->route('home')->withErrors([
+        return redirect()->route('index')->withErrors([
             'success' => auth()->user()->name . ' خوش آمدید'
         ]);
     }
@@ -59,24 +67,21 @@ class AuthController extends Controller
     {
         $credentials = $request->validate(
             [
-                'email' => ['required', 'email'],
+                'idCard' => ['required', 'ir_national_id'],
                 'password' => ['required'],
-
             ],
             [
-
-                'email.required' => 'ایمیل معتبر خود را وارد کنید',
+                'idCard.required' => 'کدملی خود را وارد کنید',
                 'password.required' => 'رمز عبور خود را وارد کنید',
-
             ]
         );
         if (Auth::attempt($credentials, $request->remember)) {
             $request->session()->regenerate();
-            return redirect()->route('home')->withErrors([
-                'success' => auth()->user()->name . 'خوش آمدید'
+            return redirect()->route('index')->withErrors([
+                'success' => auth()->user()->name . ' خوش آمدید'
             ]);
         } else {
-            return redirect()->back()->with('error', callback('نام کاربری یا رمز عبور اشتباه است '));
+            return redirect()->back()->with('erroe', 'مشکلی پیش آمده است . مجدد اقدام فرمایید.');
         }
     }
 
@@ -85,6 +90,6 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('home')->withErrors(['success' => 'با موفقیت از سایت خارج شدید.']);
+        return redirect()->route('index')->withErrors(['success' => 'با موفقیت از سایت خارج شدید.']);
     }
 }

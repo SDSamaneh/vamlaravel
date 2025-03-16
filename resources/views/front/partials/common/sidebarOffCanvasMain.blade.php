@@ -23,9 +23,6 @@
                   </div>
                   <div class="my-4">
                         <ul class="nav d-flex flex-column offcanvas-dash-nav">
-                              <li class="nav-item my-1 bg-light"><a class="nav-link" style="font-size: 17px;" href="" data-bs-toggle="offcanvas" data-bs-target="#offcanvas‌Profile">پروفایل</a></li>
-
-                              <li class="nav-item my-1 bg-light"><a class="nav-link" style="font-size: 17px;" href="{{route('News')}}">همه اخبار</a></li>
                               <li class="nav-item my-1 bg-light"><a class="nav-link" style="font-size: 17px;" href="{{route('index')}}">داشبورد</a></li>
 
                               <form method="post" action="{{route('logout')}}">

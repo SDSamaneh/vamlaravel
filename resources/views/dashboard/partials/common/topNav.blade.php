@@ -20,124 +20,35 @@
                         <ul class="navbar-nav navbar-nav-scroll mx-auto">
 
                               <!-- Nav item 1 Demos -->
-                              <li class="nav-item"><a class="nav-link" href="{{route('home')}}"><i class="bi bi-house-door me-1"></i>وبسایت</a></li>
+                              <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-house-door me-1"></i>وبسایت</a></li>
 
                               <!-- Nav item 2 Post -->
                               <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="postMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-pencil me-1"></i>مدیریت اخبار</a>
+                                    <a class="nav-link dropdown-toggle" href="#" id="postMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-pencil me-1"></i>مدیریت وام ها</a>
                                     <ul class="dropdown-menu" aria-labelledby="postMenu">
                                           <!-- dropdown submenu -->
-                                          <li> <a class="dropdown-item" href="{{route('allNews')}}">همه خبرها</a> </li>
-
-                                          <li> <a class="dropdown-item" href="{{route('article.create')}}">ایجاد خبر</a> </li>
-                                          <li> <a class="dropdown-item" href="{{route('editNews')}}">ویرایش خبر</a> </li>
-                                          <li> <a class="dropdown-item" href="{{route('categoryNews.index')}}">افزودن دسته بندی</a> </li>
+                                          <li> <a class="dropdown-item" href="{{route('vam.index')}}">همه درخواست ها</a> </li>
+                                          <li> <a class="dropdown-item" href="{{route('vam.create')}}">افزودن درخواست وام</a> </li>
                                     </ul>
                               </li>
-                              <li class="nav-item"><a class="nav-link" href="{{route('users')}}"><i class="bi bi-people me-1 fs-5"></i>مدیریت کاربران</a></li>
+
+                              <li class="nav-item"><a class="nav-link" href="{{route('category.index')}}"><i class="bi bi-chat-dots me-1"></i>افزودن دسته بندی</a></li>
+                              <li class="nav-item"><a class="nav-link" href="{{route('supervisor.index')}}"><i class="bi bi-chat-dots me-1"></i>افزودن مدیرواحد</a></li>
+                              <li class="nav-item"><a class="nav-link" href="{{route('departman.index')}}"><i class="bi bi-chat-dots me-1"></i>افزودن دپارتمان</a></li>
+
+                              <li class=" nav-item"><a class="nav-link" href="{{route('users.index')}}"><i class="bi bi-people me-1 fs-5"></i>مدیریت کاربران</a></li>
                         </ul>
                   </div>
                   <!-- Main navbar END -->
 
                   <!-- Nav right START -->
                   <div class="nav flex-nowrap align-items-center">
-
-                        <!-- Notification dropdown START -->
-                        <div class="nav-item ms-2 ms-md-3 dropdown">
-                              <!-- Notification button -->
-                              <a class="btn btn-primary-soft btn-round mb-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-                                    <i class="bi bi-bell fa-fw"></i>
-                              </a>
-                              <!-- Notification dote -->
-                              <span class="notif-badge animation-blink"></span>
-
-                              <!-- Notification dropdown menu START -->
-                              <div class="dropdown-menu dropdown-animation dropdown-menu-end dropdown-menu-size-md p-0 shadow-lg border-0">
-                                    <div class="card bg-transparent">
-                                          <div class="card-header bg-transparent border-bottom p-3 d-flex justify-content-between align-items-center">
-                                                <h6 class="m-0">نوتیفیکیشن <span class="badge bg-danger bg-opacity-10 text-danger ms-2">2 خبر</span></h6>
-                                                <a class="small" href="#">حذف</a>
-                                          </div>
-                                          <div class="card-body p-0">
-                                                <ul class="list-group list-unstyled list-group-flush">
-                                                      <!-- Notif item -->
-                                                      <li>
-                                                            <a href="#" class="list-group-item-action border-0 border-bottom d-flex p-3">
-                                                                  <div class="me-3">
-                                                                        <div class="avatar avatar-sm">
-                                                                              <img class="avatar-img rounded-circle" src="assets/images/avatar/08.jpg" alt="avatar">
-                                                                        </div>
-                                                                  </div>
-                                                                  <div>
-                                                                        <h6 class="mb-1">ثبت نام یک کاربر</h6>
-                                                                        <span class="small"> <i class="bi bi-clock"></i> 3 دقیقه پیش</span>
-                                                                  </div>
-                                                            </a>
-                                                      </li>
-
-                                                      <!-- Notif item -->
-                                                      <li>
-                                                            <a href="#" class="list-group-item-action border-0 border-bottom d-flex p-3">
-                                                                  <div class="me-3">
-                                                                        <div class="avatar avatar-sm">
-                                                                              <img class="avatar-img rounded-circle" src="assets/images/avatar/02.jpg" alt="avatar">
-                                                                        </div>
-                                                                  </div>
-                                                                  <div>
-                                                                        <h6 class="mb-1">حذف یک حساب کاربری</h6>
-                                                                        <span class="small"> <i class="bi bi-clock"></i> 6 دقیقه پیش</span>
-                                                                  </div>
-                                                            </a>
-                                                      </li>
-
-                                                      <!-- Notif item -->
-                                                      <li>
-                                                            <a href="#" class="list-group-item-action border-0 border-bottom d-flex p-3">
-                                                                  <div class="me-3">
-                                                                        <div class="avatar avatar-sm">
-                                                                              <img class="avatar-img rounded-circle" src="assets/images/avatar/05.jpg" alt="avatar">
-                                                                        </div>
-                                                                  </div>
-                                                                  <div>
-                                                                        <h6 class="mb-1">ثبت دیدگاه جدید</h6>
-                                                                        <span class="small"> <i class="bi bi-clock"></i> 10 دقیقه پیش</span>
-                                                                  </div>
-                                                            </a>
-                                                      </li>
-
-                                                      <!-- Notif item -->
-                                                      <li>
-                                                            <a href="#" class="list-group-item-action border-0 border-bottom d-flex p-3">
-                                                                  <div class="me-3">
-                                                                        <div class="avatar avatar-sm">
-                                                                              <img class="avatar-img rounded-circle" src="assets/images/avatar/03.jpg" alt="avatar">
-                                                                        </div>
-                                                                  </div>
-                                                                  <div>
-                                                                        <h6 class="mb-1">بروزرسانی تنظیمات کاربری</h6>
-                                                                        <span class="small"> <i class="bi bi-clock"></i> دیروز</span>
-                                                                  </div>
-                                                            </a>
-                                                      </li>
-                                                </ul>
-                                          </div>
-                                          <!-- Button -->
-                                          <div class="card-footer bg-transparent border-0 py-3 text-center position-relative">
-                                                <a href="#" class="stretched-link">مشاهده تمام فعالیت ها</a>
-                                          </div>
-                                    </div>
-                              </div>
-                              <!-- Notification dropdown menu END -->
-                        </div>
-                        <!-- Notification dropdown END -->
-
                         <!-- Profile dropdown START -->
                         <div class="nav-item ms-2 ms-md-3 dropdown">
                               <!-- Avatar -->
                               <a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
                                     <img class="avatar-img rounded-circle" src="{{Vite::image('avatar/avatar.png')}}" alt="avatar">
                               </a>
-
                               <!-- Profile dropdown START -->
                               <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
                                     <!-- Profile info -->
@@ -154,16 +65,22 @@
                                           </div>
                                           <hr>
                                     </li>
-                                    <!-- Links -->
-                                    <li><a class="dropdown-item" href="{{route('profile')}}"><i class="bi bi-person fa-fw me-2"></i>ویرایش</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="bi bi-power fa-fw me-2"></i>خروج</a></li>
+
+                                    <li><a class="dropdown-item" href="{{route('users.edit')}}}"><i class="bi bi-person fa-fw me-2"></i>ویرایش</a></li>
+
+
+                                    <form method="post" action="{{route('logout')}}">
+                                          @csrf
+                                          <li><button type="submit" class="dropdown-item">خروج</button></li>
+                                    </form>
                                     <li class="dropdown-divider mb-3"></li>
+                                    <!--  Dark mode  -->
                                     <li>
                                           <div class="dropdown-item">
                                                 <!-- Dark mode options START -->
                                                 <div class="nav-item dropdown ms-3">
                                                       <!-- Switch button -->
-                                                      <button class="modeswitch" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown"
+                                                      <button class="modeswitch " id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown"
                                                             data-bs-display="static">
                                                             <svg class="theme-icon-active">
                                                                   <use href="#"></use>
@@ -214,7 +131,6 @@
                               <!-- Profile dropdown END -->
                         </div>
                         <!-- Profile dropdown END -->
-
                         <!-- Nav right END -->
                   </div>
             </div>

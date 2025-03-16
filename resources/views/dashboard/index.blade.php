@@ -1,4 +1,4 @@
-@extends('layouts.dashbooard.master')
+@extends('layouts.dashboard.master')
 @section('content')
 <main>
       <!-- Main contain START -->

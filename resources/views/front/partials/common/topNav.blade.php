@@ -8,7 +8,7 @@
       <nav class="navbar navbar-expand-lg">
             <div class="container">
                   <!-- Logo START -->
-                  <a class="navbar-brand" href="{{route('home')}}">
+                  <a class="navbar-brand" href="">
                         <img class="navbar-brand-item light-mode-item" src="{{Vite::image('logo.png')}}" alt="logo">
                         <img class="navbar-brand-item dark-mode-item" src="{{Vite::image('logo.png')}}" alt="logo">
                   </a>
@@ -23,14 +23,9 @@
                   <!-- Main navbar START -->
                   <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav navbar-nav-scroll mx-auto">
-                              <li class="nav-item dropdown">
-                                    <a class="nav-link" href="#">درباره ما</a>
-                              </li>
 
-                              <li class="nav-item"><a class="nav-link" href="{{route('News')}}"> اخبار</a></li>
-                              <li class="nav-item"><a class="nav-link" href="{{route('manual')}}"> manual</a></li>
                               <li class="nav-item dropdown">
-                                    <a class="nav-link" href="#">تماس ما</a>
+                                    <a class="nav-link" href="#">اخبار کویرموتور</a>
                               </li>
 
                         </ul>
@@ -108,8 +103,8 @@
                               <a class="nav-link dropdown-toggle notif-dropdown-toggle p-2" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true"
                                     aria-expanded="false"><i class="bi bi-bell" style="font-size: 23px;"></i></a>
                               <ul class="dropdown-menu" aria-labelledby="pagesMenu">
-                                    <li> <a class="dropdown-item text-warning" href="about-us.html"><span class="badge bg-warning me-2">10</span>پیام خوانده نشده دارید</a></li>
-                                    <li> <a class="dropdown-item text-danger" href="contact-us.html"><span class="badge bg-danger me-2">14</span>دیدگاه در صف بررسی می باشد</a></a></li>
+                                    <li> <a class="dropdown-item text-warning" href="#"><span class="badge bg-warning me-2">10</span>پیام خوانده نشده دارید</a></li>
+                                    <li> <a class="dropdown-item text-danger" href="#"><span class="badge bg-danger me-2">14</span>دیدگاه در صف بررسی می باشد</a></a></li>
 
                               </ul>
                         </div>

@@ -1,4 +1,4 @@
-@extends('layouts.dashbooard.master')
+@extends('layouts.dashboard.master')
 @section('content')
 <main>
       <!-- Main contain START -->
@@ -6,7 +6,7 @@
             <div class="container">
                   <div class="row g-4">
 
-                        @include('dashboard.partials.index.chart')
+                        @include('dashboard.partials.users.allUsers')
 
                   </div>
             </div>

@@ -17,7 +17,6 @@
 
 @auth()
 
-@include('front.partials.common.profile')
 @include('front.partials.common.bookmark')
 
 @endauth

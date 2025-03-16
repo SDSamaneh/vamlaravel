@@ -9,6 +9,7 @@ class Category extends Model
 {
 
     protected $fillable = [
+        'author_id',
         'name',
         'slug',
         'description'
@@ -16,8 +17,8 @@ class Category extends Model
 
 
 
-    public function articles(): HasMany
+    public function vam(): HasMany
     {
-        return $this->hasMany(Article::class);
+        return $this->hasMany(Vam::class);
     }
 }

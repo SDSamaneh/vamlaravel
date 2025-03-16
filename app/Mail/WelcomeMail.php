@@ -31,7 +31,7 @@ class WelcomeMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'خوش آمدید سمانه جون ',
+            subject: 'خوش آمدید کاربر عزیز ',
             from: new Address('samame.sedigh@gmail.com', 'مدیریت وب سایت')
             // to: 'samame.sedigh@gmail.com',
 
