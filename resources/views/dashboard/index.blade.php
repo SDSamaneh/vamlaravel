@@ -5,10 +5,12 @@
       <section class="py-4">
             <div class="container">
                   <div class="row g-4">
+                        @if(auth()->user()->role === 'admin')
+
                         @include('dashboard.partials.index.statistics')
                         @include('dashboard.partials.index.chart')
                         @include('dashboard.partials.index.viewsStatistics')
-                        @include('dashboard.partials.index.newsList')
+                        @endif
                   </div>
             </div>
       </section>

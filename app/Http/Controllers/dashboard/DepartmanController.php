@@ -14,8 +14,8 @@ class DepartmanController extends Controller
     public function index()
     {
         $departmans = Departmans::all();
-
-        return view('dashboard/departman', compact('departmans'));
+        $departmanCount = Departmans::count();
+        return view('dashboard/departman', compact('departmans', 'departmanCount'));
     }
 
     /**

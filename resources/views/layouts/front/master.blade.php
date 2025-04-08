@@ -8,17 +8,6 @@
 
 @include('front.partials.common.topNav')
 
-
 @yield('content')
-
-
-
-@include('front.partials.common.bottomNav')
-
-@auth()
-
-@include('front.partials.common.bookmark')
-
-@endauth
 
 @include('front.partials.common.footer')

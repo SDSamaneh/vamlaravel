@@ -7,6 +7,7 @@ use App\Models\dashboard\Category;
 use App\Models\dashboard\Departmans;
 use App\Models\dashboard\Supervisors;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
 {

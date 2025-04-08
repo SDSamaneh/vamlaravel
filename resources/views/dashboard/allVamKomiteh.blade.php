@@ -5,7 +5,11 @@
       <section class="py-4">
             <div class="container">
                   <div class="row g-4">
+                        @if ($role === 'author' || $role === 'admin' || $role === 'manager')
+
                         @include('dashboard.partials.vam.all')
+
+                        @endif
 
                   </div>
             </div>

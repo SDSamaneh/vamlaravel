@@ -20,8 +20,8 @@ class VamController extends Controller
     {
         $vams = Vam::all();
         $role = Auth::user()->role;
-
-        return view('dashboard/allVamKomiteh', compact('vams', 'role'));
+        $vamCount = Vam::count();
+        return view('dashboard/allVamKomiteh', compact('vams', 'role', 'vamCount'));
     }
 
     /**
@@ -84,11 +84,9 @@ class VamController extends Controller
 
         // بازگشت نتیجه
         return $vams
-            ? redirect()->route('vam.index')->with('success', 'دسته‌بندی شما با موفقیت ثبت شد.')
-            : redirect()->route('vam.index')->with('error', 'مشکلی رخ داده است.');
+            ? redirect()->route('vam.create')->with('success', 'دسته‌بندی شما با موفقیت ثبت شد.')
+            : redirect()->route('vam.create')->with('error', 'مشکلی رخ داده است.');
     }
-
-
     /**
      * Display the specified resource.
      */
@@ -103,7 +101,9 @@ class VamController extends Controller
     public function edit(string $id)
     {
         $vam = Vam::find($id);
-        return $vam ? view('dashboard.editVamKomiteh', compact(['vam'])) : redirect()->route('vam.index')->with('error', 'درخواست مورد نظر پیدا نشد.');
+        $role = Auth::user()->role;
+
+        return $vam ? view('dashboard.editVamKomiteh', compact('vam', 'role')) : redirect()->route('vam.index')->with('error', 'درخواست مورد نظر پیدا نشد.');
     }
 
     /**
@@ -111,7 +111,7 @@ class VamController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+      
     }
 
     /**

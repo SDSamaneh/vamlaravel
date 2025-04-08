@@ -14,26 +14,6 @@
       <!-- Plugins CSS -->
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css">
-
-      <style>
-            .swiper {
-                  width: 100%;
-                  /* height: 400px; */
-            }
-      </style>
 </head>
 
 <body id="main">
-
-      <div class="pull-to-refresh">
-            <div class="spiner-border"></div>
-      </div>
-      <!-- Preloader START -->
-      <!-- <div class="preloader">
-		<div class="loader">
-			<div class="sh1"></div>
-			<div class="sh2"></div>
-		</div>
-	</div> -->
-      <!-- Preloader END -->
-      <!-- Slider main container -->

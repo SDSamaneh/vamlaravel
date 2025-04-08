@@ -10,6 +10,21 @@
                                     <form action="{{route('vam.store')}}" method="post">
                                           @csrf
                                           <div class="row">
+                                                <div class="col-md-6">
+                                                      @if (session('success'))
+                                                      <div class="alert alert-success">
+                                                            {{ session('success') }}
+                                                      </div>
+                                                      @endif
+
+                                                      @if (session('error'))
+                                                      <div class="alert alert-danger">
+                                                            {{ session('error') }}
+                                                      </div>
+                                                      @endif
+                                                </div>
+                                          </div>
+                                          <div class="row">
                                                 <div class="col-md-3">
                                                       <div class="mb-3">
                                                             <label class="form-label">نام و نام خانوادگی</label>
@@ -28,7 +43,6 @@
                                                             @enderror
                                                       </div>
                                                 </div>
-                                                <!-- Departman -->
                                                 <div class="col-md-3">
                                                       <div class="mb-3">
                                                             <label class="form-label">سرپرست واحد</label>
@@ -46,7 +60,6 @@
                                                             @enderror
                                                       </div>
                                                 </div>
-                                                <!-- Supervisor -->
                                                 <div class="col-md-3">
                                                       <div class="mb-3">
                                                             <label class="form-label">دپارتمان</label>
@@ -74,7 +87,6 @@
                                                       </div>
                                                 </div>
                                                 <div class="col-md-3">
-                                                      <!-- Message -->
                                                       <div class="mb-3">
                                                             <label class="form-label">نوع درخواست</label>
                                                             <select class="form-select" name="category_id" aria-label="Default select example">
@@ -83,7 +95,6 @@
                                                                   <option value="{{$category->id}}">{{$category->name}}</option>
                                                                   @empty
                                                                   <option>دسته بندی پیدا نشد</option>
-
                                                                   @endforelse
                                                             </select>
                                                             @error('category_id')
@@ -92,7 +103,6 @@
                                                       </div>
                                                 </div>
                                                 <div class="col-md-3">
-                                                      <!-- Tags -->
                                                       <div class="mb-3">
                                                             <label class="form-label">دلیل درخواست</label>
                                                             <select class="form-select" name="resone" aria-label="Default select example">
@@ -122,17 +132,14 @@
                                                 <div class="col-md-6">
                                                       <div class="mb-3">
                                                             <label class="form-label">توضیحات</label>
-                                                            <textarea class="form-control" name="description" rows="3"></textarea>
+                                                            <textarea class="form-control" name="description1" rows="3"></textarea>
                                                             @error('description')
                                                             <small class="mt-2 d-inline-block text-danger">{{$message}}</small>
                                                             @enderror
                                                       </div>
                                                 </div>
-
-
-                                                <hr />
                                                 @if ($role === 'author' || $role === 'admin')
-
+                                                <hr />
                                                 <div class="col-md-12 text-center mt-3">
                                                       <h2 class="mb-0 font-bold">تاییدیه مدیر واحد</h2>
                                                 </div>
@@ -144,15 +151,12 @@
                                                             </label>
                                                       </div>
                                                 </div>
-
                                                 @endif
                                                 <hr />
-
                                                 @if ($role === 'humanResources' || $role === 'admin')
                                                 <div class="col-md-12 text-center mt-3">
                                                       <h2 class="mb-3">اعتبارسنجی</h2>
                                                 </div>
-
                                                 <div class="col-md-4">
                                                       <div class="mb-3">
                                                             <label class="form-label">تاریخ عضویت در صندوق</label>
@@ -216,10 +220,9 @@
                                                             @enderror
                                                       </div>
                                                 </div>
-
                                                 <div class="col-md-6">
                                                       <label class="form-label">توضیحات</label>
-                                                      <textarea name="description" class="form-control"></textarea>
+                                                      <textarea name="description2" class="form-control"></textarea>
                                                 </div>
                                                 <div class="col-md-6 mt-3">
                                                       <div class="form-check mb-3">
@@ -228,21 +231,8 @@
                                                       </div>
                                                 </div>
                                                 @endif
-                                                <hr />
-                                                <!-- @if ($role === 'manager' || $role === 'admin')
-                                                <div class="col-md-12 text-center mt-3">
-                                                      <h2>مدیریت مالی</h2>
-                                                </div>
-                                                <div class="col-md-6 mt-3">
-                                                      <div class="form-check mb-3">
-                                                            <input class="form-check-input" type="checkbox" name="" value="" id="managerCheck">
-                                                            <label class="form-check-label" for="managerCheck">درخواست توسط مدیر مالی مورد تایید می باشد</label>
-                                                      </div>
-                                                </div>
-                                                @endif -->
-
                                                 <div class="col-md-12 mt-3 text-end">
-                                                      <button class="btn btn-success" type="submit">ثبت درخواست</button>
+                                                      <button class="btn btn-primary" type="submit">ثبت درخواست</button>
                                                 </div>
                                           </div>
                                     </form>

@@ -3,12 +3,11 @@
             <!-- Divider -->
             <div class="border-bottom border-2 border-primary opacity-1"></div>
       </div>
-      </div>
       <!-- Logo Nav START -->
       <nav class="navbar navbar-expand-lg">
             <div class="container">
                   <!-- Logo START -->
-                  <a class="navbar-brand" href="">
+                  <a class="navbar-brand" href="{{route('index')}}">
                         <img class="navbar-brand-item light-mode-item" src="{{Vite::image('logo.png')}}" alt="logo">
                         <img class="navbar-brand-item dark-mode-item" src="{{Vite::image('logo.png')}}" alt="logo">
                   </a>
@@ -24,9 +23,17 @@
                   <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav navbar-nav-scroll mx-auto">
 
+                              @auth
                               <li class="nav-item dropdown">
-                                    <a class="nav-link" href="#">اخبار کویرموتور</a>
+                                    <a class="nav-link" href="{{route('vam.create')}}">درخواست وام</a>
                               </li>
+                              <li class="nav-item dropdown">
+                                    <a class="nav-link" href="#">درخواست خرید از مادیران</a>
+                              </li>
+                              <li class="nav-item dropdown">
+                                    <a class="nav-link" href="#">درخواست خدمات تعمیرگاهی</a>
+                              </li>
+                              @endauth
 
                         </ul>
                   </div>
@@ -85,30 +92,7 @@
                               </div>
                               <!-- Dark mode options END -->
                         </div>
-                        <!-- Nav Search -->
-                        <div class="nav-item dropdown dropdown-toggle-icon-none nav-search">
-                              <a class="nav-link dropdown-toggle p-1" role="button" href="#" id="navSearch" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-search fs-4"> </i>
-                              </a>
-                              <div class="dropdown-menu dropdown-menu-end shadow rounded p-2" aria-labelledby="navSearch">
-                                    <form class="input-group">
-                                          <input class="form-control border-success" type="search" placeholder="جستجو" aria-label="Search">
-                                          <button class="btn btn-success m-0" type="submit">جستجو</button>
-                                    </form>
-                              </div>
-                        </div>
-
-                        <div class="nav-item dropdown position-relative">
-                              <span class="notif-badge-front animation-blink"></span>
-                              <a class="nav-link dropdown-toggle notif-dropdown-toggle p-2" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false"><i class="bi bi-bell" style="font-size: 23px;"></i></a>
-                              <ul class="dropdown-menu" aria-labelledby="pagesMenu">
-                                    <li> <a class="dropdown-item text-warning" href="#"><span class="badge bg-warning me-2">10</span>پیام خوانده نشده دارید</a></li>
-                                    <li> <a class="dropdown-item text-danger" href="#"><span class="badge bg-danger me-2">14</span>دیدگاه در صف بررسی می باشد</a></a></li>
-
-                              </ul>
-                        </div>
-
+                       
                         <!-- Offcanvas menu toggler -->
                         <div class="nav-item align-self-end">
                               @auth

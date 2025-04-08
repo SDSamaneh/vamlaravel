@@ -1,14 +1,11 @@
 <section class="py-4">
       <div class="container">
-            <div class="row pb-4">
-                  <div class="col-12">
-                        <h1 class="mb-0 h3">افزودن مدیر واحد</h1>
-                  </div>
-            </div>
-
             <div class="row pb-4 bg-light p-3 mb-4 rounded">
                   <div class="col-12">
                         <div class="card border">
+                              <div class="card-header">
+                                    <h3>افزودن مدیر واحد</h3>
+                              </div>
                               <div class="card-body">
                                     <form action="{{route('supervisor.store')}}" method="post" enctype="multipart/form-data">
                                           @csrf
@@ -48,7 +45,7 @@
                                                       </div>
                                                 </div>
 
-                                                <div class="col-sm-12 text-center">
+                                                <div class="col-sm-12 text-end">
                                                       <button class="btn btn-success" type="submit">ثبت درخواست</button>
                                                 </div>
                                           </div>
@@ -60,6 +57,13 @@
             <div class="row g-4">
                   <div class="col-md-6 col-xl-12">
                         <div class="card border bg-transparent rounded-3">
+                              <div class="card-header">
+                                    <div class="d-sm-flex justify-countent-sm-between align-items-center">
+                                          <h1 class="mb-2 mb-sm-0 h3">لیست مدیران واحد
+                                                <span class="badge bg-primary bg-opacity-10 text-primary">{{$supervisorCount}}</span>
+                                          </h1>
+                                    </div>
+                              </div>
                               <!-- Card body START -->
                               <div class="card-body p-3">
                                     <!-- Post list table START -->
@@ -89,10 +93,17 @@
                                                                   <h6 class="course-title mt-2 mt-md-0 mb-0"><a href="#">{{$supervisor->idCard}}</a></h6>
                                                             </td>
                                                             <td>
-                                                                  <h6 class="course-title mt-2 mt-md-0 mb-0"><a href="#">{{$supervisor->departmans_id}}</a></h6>
+                                                                  <h6 class="course-title mt-2 mt-md-0 mb-0"><a href="#">{{$supervisor->departmans->name}}</a></h6>
                                                             </td>
                                                             <td>
-                                                                  <h6><a href="{{route('supervisor.edit',$supervisor->id)}}" class="text-success mb-0 me-2"><i class="fas fa-edit"></i></a></h6>
+                                                                  <div class="d-flex">
+                                                                        <h6><a href="{{route('supervisor.edit',$supervisor->id)}}" class="text-success mb-0 me-2"><i class="fas fa-edit"></i></a></h6>
+                                                                        <form action="{{route('supervisor.destroy',$supervisor->id)}}" method="post">
+                                                                              @csrf
+                                                                              @method('DELETE')
+                                                                              <button type="submit" class="border-0 bg-transparent"><i class="fas fa-trash text-danger"></i></button>
+                                                                        </form>
+                                                                  </div>
                                                             </td>
                                                       </tr>
                                                       @endforeach

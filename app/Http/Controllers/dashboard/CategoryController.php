@@ -16,7 +16,8 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return view('dashboard/categoryKomiteh', compact('categories'));
+        $categoryCount = Category::count();
+        return view('dashboard/categoryKomiteh', compact('categories', 'categoryCount'));
     }
 
     /**

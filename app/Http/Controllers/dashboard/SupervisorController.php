@@ -16,8 +16,8 @@ class SupervisorController extends Controller
     {
         $supervisors = Supervisors::all();
         $departmans = Departmans::all();
-
-        return view('dashboard/supervisor', compact('supervisors', 'departmans'));
+        $supervisorCount = Supervisors::count();
+        return view('dashboard/supervisor', compact('supervisors', 'departmans', 'supervisorCount'));
     }
 
     /**

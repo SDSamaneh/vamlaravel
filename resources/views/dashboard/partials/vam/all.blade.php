@@ -4,7 +4,9 @@
                   <div class="col-12">
                         <!-- Title -->
                         <div class="d-sm-flex justify-content-sm-between align-items-center">
-                              <h1 class="mb-2 mb-sm-0 h3">لیست درخواست ها <span class="badge bg-primary bg-opacity-10 text-primary">110</span></h1>
+                              <h1 class="mb-2 mb-sm-0 h3">افزودن وام
+                                    <span class="badge bg-primary bg-opacity-10 text-primary">{{$vamCount}}</span>
+                              </h1>
                               <a href="{{route('vam.create')}}" class="btn btn-sm btn-primary mb-0"><i class="fas fa-plus me-2"></i>ثبت درخواست وام جدید</a>
                         </div>
                   </div>
@@ -16,6 +18,7 @@
                               <div class="card-body p-3">
                                     <!-- Post list table START -->
                                     <div class="table-responsive border-0">
+
                                           <table class="table align-middle p-1 mb-0 table-hover table-shrink">
                                                 <!-- Table head -->
                                                 <thead class="table-dark">
@@ -25,9 +28,9 @@
                                                             <th scope="col" class="border-0">دپارتمان</th>
                                                             <th scope="col" class="border-0">مدیرواحد</th>
                                                             <th scope="col" class="border-0">مبلغ وام</th>
-                                                            <th scope="col" class="border-0">ویرایش</th>
+                                                            <th scope="col" class="border-0">جزئیات</th>
                                                             <th scope="col" class="border-0">اعتبار سنجی</th>
-                                                            <th scope="col" class="border-0"></th>
+                                                            <th scope="col" class="border-0">عملیات</th>
 
 
                                                       </tr>
@@ -53,7 +56,7 @@
                                                             <td>
                                                                   <h6 class="course-title mt-2 mt-md-0 mb-0"><a href="#">{{$vam->price}}</a></h6>
                                                             </td>
-                                                            @if ($role === 'author' || $role === 'admin')
+                                                            @if ($role === 'author' || $role === 'admin' || $role==='manager')
                                                             <td>
                                                                   <h6><a href="{{route('vam.edit',$vam->id)}}" class="text-success mb-0 me-2"><i class="fas fa-edit"></i></a></h6>
                                                             </td>
@@ -72,7 +75,7 @@
                                                                   </h6>
                                                             </td>
                                                             @endif
-                                                            @if ($role === 'admin')
+                                                            @if ($role === 'admin' ||$role === 'author')
                                                             <td>
                                                                   <div class="d-flex justify-align-content-between align-items-center">
                                                                         <form action="{{route('vam.destroy',$vam->id)}}" method="post">

@@ -7,6 +7,7 @@ use App\Http\Controllers\dashboard\SupervisorController;
 use App\Http\Controllers\dashboard\UserController;
 use App\Http\Controllers\dashboard\VamController;
 use App\Http\Controllers\front\IndexController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -35,7 +36,7 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
     });
 
     Route::middleware('role:author|manager|admin')->group(function () {
-        Route::view('/', 'dashboard.index')->name('index');
+        Route::view('/', 'dashboard.index')->name('dashboard');
         Route::resource('users', UserController::class);
         Route::get('/users/edit', [UserController::class, 'edit'])->name('users.edit');
     });
@@ -46,6 +47,11 @@ Route::middleware('role:author|admin|humanResources|manager|subscriber')->group(
         Route::resource('/vam', VamController::class);
     }
 );
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
+});
 
 //Front Auth Routes
 Route::prefix('/auth')->middleware('guest')->group(function () {
