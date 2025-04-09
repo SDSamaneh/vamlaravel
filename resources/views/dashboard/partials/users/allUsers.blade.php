@@ -18,7 +18,6 @@
                                                             <th scope="col" class="border-0 rounded-start">نام و نام خانوادگی</th>
                                                             <th scope="col" class="border-0">کدملی</th>
                                                             <th scope="col" class="border-0">شماره همراه</th>
-                                                            <th scope="col" class="border-0">ویرایش</th>
                                                             <th scope="col" class="border-0">حذف</th>
                                                       </tr>
                                                 </thead>
@@ -34,13 +33,7 @@
                                                             </td>
                                                             <td>
                                                                   <h6 class="course-title mt-2 mt-md-0 mb-0"><a href="#">{{$user->phone_number}}</a></h6>
-                                                            </td>
-                                                            <td>
-                                                                  <h6 class="course-title mt-2 mt-md-0 mb-0">
-
-                                                                        <a href="{{route('users.edit',$user->id)}}" class="text-success mb-0 me-2"><i class="fas fa-edit"></i></a>
-                                                                  </h6>
-                                                            </td>
+                                                            </td>                                                          
                                                             <td>
                                                                   <div class="d-flex justify-align-content-between align-items-center">
                                                                         <form action="{{route('users.destroy',$user->id)}}" method="post">

@@ -21,8 +21,7 @@
 
                               <!-- Nav item 1 Demos -->
                               <li class="nav-item"><a class="nav-link" href="{{route('index')}}"><i class="bi bi-house-door me-1"></i>وبسایت</a></li>
-                              @if(auth()->user()->role === 'admin')
-
+                              @if(auth()->user()->role === 'admin' || auth()->user()->role === 'author')
                               <!-- Nav item 2 Post -->
                               <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="postMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-pencil me-1"></i>مدیریت وام ها</a>
@@ -33,10 +32,33 @@
                                     </ul>
                               </li>
 
-                              <li class="nav-item"><a class="nav-link" href="{{route('category.index')}}"><i class="bi bi-chat-dots me-1"></i>افزودن دسته بندی</a></li>
-                              <li class="nav-item"><a class="nav-link" href="{{route('supervisor.index')}}"><i class="bi bi-chat-dots me-1"></i>افزودن مدیرواحد</a></li>
-                              <li class="nav-item"><a class="nav-link" href="{{route('departman.index')}}"><i class="bi bi-chat-dots me-1"></i>افزودن دپارتمان</a></li>
-                              <li class=" nav-item"><a class="nav-link" href="{{route('users.index')}}"><i class="bi bi-people me-1 fs-5"></i>مدیریت کاربران</a></li>
+                              <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="postMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-pencil me-1"></i>مدیریت درخواست تعمیرگاه</a>
+                                    <ul class="dropdown-menu" aria-labelledby="postMenu">
+                                          <!-- dropdown submenu -->
+                                          <li> <a class="dropdown-item" href="{{route('service.index')}}">همه درخواست ها</a> </li>
+                                          <li> <a class="dropdown-item" href="{{route('service.create')}}">افزودن درخواست</a> </li>
+                                    </ul>
+                              </li>
+
+
+                              <li class="nav-item"><a class="nav-link" href="{{route('category.index')}}"><i class="bi bi-chat-dots me-1"></i> درخواست ها</a></li>
+
+                              <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="postMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-people me-1 fs-5"></i>مدیریت کاربران</a>
+                                    <ul class="dropdown-menu" aria-labelledby="postMenu">
+                                          <!-- dropdown submenu -->
+                                          <li> <a class="dropdown-item" href="{{route('users.index')}}">همه کاربران</a> </li>
+                                          <li> <a class="dropdown-item" href="{{route('supervisor.index')}}">مدیران واحد</a> </li>
+                                          <li> <a class="dropdown-item" href="{{route('departman.index')}}">دپارتمان</a> </li>
+                                    </ul>
+                              </li>
+
+
+                              @endif
+                              @if(auth()->user()->role === 'manager')
+                              <li class="nav-item"><a class="nav-link" href="{{route('vam.index')}}">درخواست وام </a></li>
+                              <li class="nav-item"><a class="nav-link" href="{{route('service.index')}}">درخواست تعیمرگاه </a></li>
                               @endif
                         </ul>
                   </div>
